@@ -20,7 +20,7 @@ Then, in the test set we search for the occurrences of the phrases and label the
 ### Solution 2
 This is a BERT-based solution. I used a [pretrained BERT](https://huggingface.co/DeepPavlov/rubert-base-cased) for Russian language. First, I parsed the text using the tokenizer of the model
 and labeled each token. Then, I split the sentences to parts of 510 tokens (the pretrained model takes only 512 tokens, 2 of which are CLS and EOS). In case the sentences were too small (which is the most often case)
-I padded them. Then, I constructed a model, that consisted of Linear layer matching each token to 58 labels (29 types of B-tags and I-tags) and a sigmoid activation function. I used a Binary Cross Entropy as a loss
+I padded them. Then, I constructed a model, that added to BERT a Linear layer matching each token to 58 labels (29 types of B-tags and I-tags) and a sigmoid activation function. I used a Binary Cross Entropy as a loss
 to evaluate the performance of the model. This version seemed to have a weakness in predicting sequences of labels (it could predict sequence like this: "B-DATE, I-DATE, no-tag, I-DATE..."; or start a sequence with
 I-tag). So, I added a convolutional layer preceded by a tanh activation function. In this way, the model could take into account the labels of neighbouring elements. This helped to improve the model's performance 
 significantly. The model shows quite good results in terms of human evaluating, but the F1-score is not high. This is related to the nature of the F1-score: situation like this (correct: "B-DATE, I-DATE, I-DATE,
