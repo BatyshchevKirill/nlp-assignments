@@ -32,4 +32,4 @@ have shown a better result if IOU or something similar was used instead for each
 **Test F1 score**: 0.47
 
 ## Best Solution
-The better solution in terms of the F1-score on the test set is a model based on BERT
+The better solution in terms of the F1-score on the test set is a model based on BERT. BERT-based models leverage contextualized word representations learned from large unlabeled corpora, allowing them to better capture semantic and syntactic information compared to dictionary-based approaches that rely on predefined lexicons and rules, resulting in superior performance for complex tasks like Nested Named Entity Recognition.
